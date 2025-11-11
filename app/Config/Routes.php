@@ -58,3 +58,11 @@ $routes->group('warehouse-staff', ['filter' => 'auth'], function($routes) {
     $routes->get('scan', 'WarehouseStaffController::scan');
     $routes->get('physical-count', 'WarehouseStaffController::physicalCount');
 });
+
+//Accounts Payable Clerk Routes
+$routes->group('apclerk', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'AccountsPayableClerkController::dashboard');
+    $routes->get('invoices', 'AccountsPayableClerkController::invoices');
+    $routes->get('payments', 'AccountsPayableClerkController::payments');
+    $routes->get('reports', 'AccountsPayableClerkController::reports');
+});

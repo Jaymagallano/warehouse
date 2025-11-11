@@ -36,6 +36,34 @@ class UserSeeder extends Seeder
                 'email' => 'procurement@warehouse.com',
                 'role' => 'procurement_officer',
                 'status' => 'active'
+            ],
+            [
+                'username' => 'apclerk',
+                'password' => password_hash('password', PASSWORD_DEFAULT),
+                'email' => 'apclerk@warehouse.com',
+                'role' => 'accounts_payable_clerk',
+                'status' => 'active'
+            ],
+            [
+                'username' => 'arclerk',
+                'password' => password_hash('password', PASSWORD_DEFAULT),
+                'email' => 'arclerk@warehouse.com',
+                'role' => 'accounts_receivable_clerk',
+                'status' => 'active'
+            ],
+            [
+                'username' => 'itadmin',
+                'password' => password_hash('password', PASSWORD_DEFAULT),
+                'email' => 'itadmin@warehouse.com',
+                'role' => 'it_administrator',
+                'status' => 'active'
+            ],
+            [
+                'username' => 'topadmin',
+                'password' => password_hash('password', PASSWORD_DEFAULT),
+                'email' => 'topadmin@warehouse.com',
+                'role' => 'top_management',
+                'status' => 'active'
             ]
         ];
 
