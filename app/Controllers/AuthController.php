@@ -17,11 +17,10 @@ class AuthController extends BaseController
         
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
-        $role = $this->request->getPost('role');
         
         $user = $userModel->authenticate($username, $password);
         
-        if ($user && $user['role'] === $role) {
+        if ($user) {
             session()->set([
                 'user_id' => $user['id'],
                 'username' => $user['username'],
@@ -32,7 +31,7 @@ class AuthController extends BaseController
             return redirect()->to($this->getDashboardByRole($user['role']));
         }
         
-        return redirect()->to('/login')->with('error', 'Invalid credentials or role mismatch');
+        return redirect()->to('/login')->with('error', 'Invalid username or password');
     }
 
     public function logout()
@@ -48,6 +47,10 @@ class AuthController extends BaseController
             case 'inventory_auditor': return '/inventory-auditor/dashboard';
             case 'procurement_officer': return '/procurement-officer/dashboard';
             case 'warehouse_staff': return '/warehouse-staff/dashboard';
+            case 'accounts_payable_clerk': return '/apclerk/dashboard';
+            case 'accounts_receivable_clerk': return '/arclerk/dashboard';
+            case 'it_administrator': return '/itadmin/dashboard';
+            case 'top_management': return '/topadmin/dashboard';
             default: return '/login';
         }
     }
