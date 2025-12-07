@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
 
 body {
     background: #f4f6fb;
@@ -8,17 +8,17 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .sidebar {
     width: 220px;
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 12px rgba(26,26,255,0.08);
+    box-shadow: 2px 0 12px rgba(255,140,0,0.08);
     position: fixed;
     left: 0;
     top: 0;
@@ -81,11 +81,11 @@ body {
     background: #fff;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(26,26,255,0.10);
+    box-shadow: 0 2px 8px rgba(255,140,0,0.10);
 }
 
 .logout-link {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 700;
     text-decoration: none;
     font-size: 1rem;
@@ -114,7 +114,7 @@ body {
 #dashboard-section h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-top: 0;
     margin-bottom: 1.2rem;
     letter-spacing: 0.5px;
@@ -187,7 +187,7 @@ body {
 .card-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .task-list {
@@ -247,13 +247,13 @@ body {
 
 .task-card:hover {
     box-shadow: 0 4px 24px rgba(60, 72, 180, 0.13);
-    border: 1.5px solid #1a1aff;
+    border: 1.5px solid #ff8c00;
 }
 
 .task-header {
     font-weight: 700;
     font-size: 1.13rem;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-bottom: 0.2rem;
 }
 
@@ -275,7 +275,7 @@ body {
 }
 
 .task-action {
-    background: linear-gradient(90deg, #1a1aff 60%, #4f8cff 100%);
+    background: linear-gradient(90deg, #ff8c00 60%, #4f8cff 100%);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -364,7 +364,7 @@ body {
 }
 
 .inventory-search-bar button {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -404,7 +404,7 @@ body {
 
 .inventory-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -468,7 +468,7 @@ body {
     background: #fff;
     padding: 2rem;
     border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(26,26,255,0.18);
+    box-shadow: 0 12px 40px rgba(255,140,0,0.18);
     width: 90%;
     max-width: 500px;
     position: relative;
@@ -485,7 +485,7 @@ body {
 
 /* Receiving specific styles */
 .add-item-btn {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -533,7 +533,7 @@ body {
 
 .receiving-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -560,17 +560,17 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .modal-content input:focus,
 .modal-content select:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
 }
 
 .modal-content button[type="submit"] {
-    background: linear-gradient(90deg, #1a1aff 60%, #4f8cff 100%);
+    background: linear-gradient(90deg, #ff8c00 60%, #4f8cff 100%);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -656,7 +656,7 @@ body {
 
 .shipping-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -674,7 +674,7 @@ body {
 }
 
 .status-delivered {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
     padding: 0.2rem 0.5rem;
     background: #e6eaff;
@@ -701,7 +701,7 @@ body {
 
 .scan-option-btn {
     background: #f0f4ff;
-    color: #1a1aff;
+    color: #ff8c00;
     border: none;
     border-radius: 6px;
     padding: 0.8rem 1.2rem;
@@ -713,7 +713,7 @@ body {
 
 .scan-option-btn.active,
 .scan-option-btn:hover {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
 }
 
@@ -727,7 +727,7 @@ body {
     max-width: 500px;
     height: 300px;
     margin: 0 auto 1rem auto;
-    border: 2px solid #1a1aff;
+    border: 2px solid #ff8c00;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -765,7 +765,7 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #1a1aff;
+    background: #ff8c00;
     animation: scan 2s infinite;
 }
 
@@ -783,7 +783,7 @@ body {
 }
 
 .scan-controls button {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -867,13 +867,13 @@ body {
 }
 
 #update-item-btn {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
 }
 
 #move-item-btn {
     background: #f0f4ff;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 /* Physical Count Styles */
@@ -884,7 +884,7 @@ body {
 }
 
 .primary-btn {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -901,8 +901,8 @@ body {
 
 .secondary-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
     border-radius: 6px;
     padding: 0.7rem 1.2rem;
     font-size: 1rem;
@@ -943,7 +943,7 @@ body {
 
 .count-header h3 {
     margin: 0;
-    color: #1a1aff;
+    color: #ff8c00;
     font-size: 1.1rem;
 }
 
@@ -961,7 +961,7 @@ body {
 
 .count-status.pending {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .count-status.completed {
@@ -979,7 +979,7 @@ body {
 }
 
 .count-action {
-    background: linear-gradient(90deg, #1a1aff 60%, #4f8cff 100%);
+    background: linear-gradient(90deg, #ff8c00 60%, #4f8cff 100%);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -1013,7 +1013,7 @@ body {
 
 .count-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -1050,13 +1050,13 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .form-group select:focus,
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
 }
 

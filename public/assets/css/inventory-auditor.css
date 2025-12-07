@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
 
 body {
     background: #f4f6fb;
@@ -8,17 +8,17 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .sidebar {
     width: 220px;
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 12px rgba(26,26,255,0.08);
+    box-shadow: 2px 0 12px rgba(255,140,0,0.08);
     position: fixed;
     left: 0;
     top: 0;
@@ -81,11 +81,11 @@ body {
     background: #fff;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(26,26,255,0.10);
+    box-shadow: 0 2px 8px rgba(255,140,0,0.10);
 }
 
 .logout-link {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 700;
     text-decoration: none;
     font-size: 1rem;
@@ -120,7 +120,7 @@ body {
 #dashboard-section h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-top: 0;
     margin-bottom: 1.2rem;
     letter-spacing: 0.5px;
@@ -193,7 +193,7 @@ body {
 .card-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .audit-table {
@@ -218,7 +218,7 @@ body {
 
 .audit-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -238,11 +238,11 @@ body {
 }
 
 .audit-action:hover {
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 .status-scheduled {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
     padding: 0.2rem 0.5rem;
     background: #e6eaff;
@@ -297,7 +297,7 @@ body {
 
 .report-details h4 {
     margin: 0 0 0.3rem 0;
-    color: #1a1aff;
+    color: #ff8c00;
     font-size: 1.1rem;
 }
 
@@ -309,7 +309,7 @@ body {
 
 .report-icon {
     font-size: 1.8rem;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .discrepancy-list {
@@ -366,7 +366,7 @@ body {
 .view-all-link {
     display: block;
     margin-top: 0.8rem;
-    color: #1a1aff;
+    color: #ff8c00;
     text-decoration: none;
     font-weight: 600;
     text-align: right;
@@ -393,7 +393,7 @@ body {
 .calendar-header button {
     background: none;
     border: none;
-    color: #1a1aff;
+    color: #ff8c00;
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0.3rem 0.8rem;
@@ -426,12 +426,12 @@ body {
 
 .day-header {
     font-weight: 600;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .calendar-day.has-event {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
     cursor: pointer;
 }
@@ -441,7 +441,7 @@ body {
 }
 
 .calendar-day.today {
-    border: 2px solid #1a1aff;
+    border: 2px solid #ff8c00;
     font-weight: 600;
 }
 
@@ -464,7 +464,7 @@ body {
     background: #fff;
     padding: 2rem;
     border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(26,26,255,0.18);
+    box-shadow: 0 12px 40px rgba(255,140,0,0.18);
     width: 90%;
     max-width: 500px;
     max-height: 90vh;
@@ -488,7 +488,7 @@ body {
 }
 
 .primary-btn {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -506,8 +506,8 @@ body {
 
 .secondary-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
     border-radius: 6px;
     padding: 0.7rem 1.2rem;
     font-size: 1rem;
@@ -532,7 +532,7 @@ body {
 .schedule-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
@@ -586,7 +586,7 @@ body {
 }
 
 .schedule-tab.active {
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .schedule-tab.active::after {
@@ -596,7 +596,7 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 .calendar-full-container {
@@ -619,7 +619,7 @@ body {
 .calendar-header-full button {
     background: none;
     border: none;
-    color: #1a1aff;
+    color: #ff8c00;
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0.3rem 0.8rem;
@@ -659,7 +659,7 @@ body {
     text-align: center;
     border: none;
     font-weight: 600;
-    color: #1a1aff;
+    color: #ff8c00;
     min-height: auto;
     padding: 0.5rem;
 }
@@ -674,7 +674,7 @@ body {
 
 .calendar-grid-full .calendar-day.today .day-number {
     color: #fff;
-    background: #1a1aff;
+    background: #ff8c00;
     border-radius: 50%;
     width: 1.5rem;
     height: 1.5rem;
@@ -697,8 +697,8 @@ body {
 
 .calendar-event.event-full {
     background: rgba(26, 26, 255, 0.1);
-    color: #1a1aff;
-    border-left: 2px solid #1a1aff;
+    color: #ff8c00;
+    border-left: 2px solid #ff8c00;
 }
 
 .calendar-event.event-cycle {
@@ -733,7 +733,7 @@ body {
 
 .audit-schedule-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
     white-space: nowrap;
 }
@@ -774,7 +774,7 @@ body {
 .discrepancy-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
@@ -799,7 +799,7 @@ body {
     flex: 1;
     min-width: 180px;
     text-align: center;
-    border-top: 4px solid #1a1aff;
+    border-top: 4px solid #ff8c00;
 }
 
 .stat-card.warning {
@@ -856,7 +856,7 @@ body {
 
 .discrepancy-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -927,14 +927,14 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     background: #f7fafd;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
     background: #fff;
 }
@@ -975,7 +975,7 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     background: #f7fafd;
 }
 
@@ -985,7 +985,7 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     background: #f7fafd;
     min-width: 140px;
 }
@@ -1026,7 +1026,7 @@ body {
 .metric-value {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-bottom: 0.3rem;
 }
 
@@ -1067,7 +1067,7 @@ body {
 .inventory-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(60, 72, 180, 0.12);
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 .card-header {
@@ -1080,7 +1080,7 @@ body {
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .card-category {
@@ -1129,7 +1129,7 @@ body {
 .inventory-view .pagination-btn,
 .inventory-view .primary-btn,
 .inventory-view .secondary-btn {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     font-weight: 600;
     border-radius: 25px;
     cursor: pointer;
@@ -1143,7 +1143,7 @@ body {
 .inventory-view .pagination-btn,
 .inventory-view .primary-btn,
 .inventory-view .card-action {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     padding: 0.7rem 1.5rem;
@@ -1172,14 +1172,14 @@ body {
 
 .inventory-view .view-btn:hover {
     background: #e0e7ff;
-    color: #1a1aff;
-    border-color: #1a1aff;
+    color: #ff8c00;
+    border-color: #ff8c00;
 }
 
 .inventory-view .view-btn.active {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 /* Card action buttons */
@@ -1275,7 +1275,7 @@ body {
 /* Primary buttons */
 .inventory-view .action-btn,
 .inventory-view .pagination-btn {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     padding: 0.7rem 1.2rem;
@@ -1292,8 +1292,8 @@ body {
 /* View toggle buttons */
 .inventory-view .view-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
     border-radius: 25px;
     padding: 0.7rem 1.5rem;
     font-size: 1rem;
@@ -1302,14 +1302,14 @@ body {
 
 .inventory-view .view-btn:hover {
     background: #e0e7ff;
-    color: #1a1aff;
-    border-color: #1a1aff;
+    color: #ff8c00;
+    border-color: #ff8c00;
 }
 
 .inventory-view .view-btn.active {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 /* Fix card action buttons */
@@ -1343,14 +1343,14 @@ body {
 .pagination-btn,
 .primary-btn,
 .secondary-btn {
-    background: #1a1aff; /* Bright blue background */
+    background: #ff8c00; /* Bright blue background */
     color: #fff;
     border: none;
     border-radius: 25px; /* Rounded corners */
     padding: 0.7rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     cursor: pointer;
     transition: background-color 0.2s;
     text-align: center;
@@ -1372,8 +1372,8 @@ body {
 /* Update view toggle buttons */
 .view-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
     border-radius: 25px;
     padding: 0.7rem 1.5rem;
     font-size: 1rem;
@@ -1381,9 +1381,9 @@ body {
 }
 
 .view-btn.active {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 /* Update buttons in modal */
@@ -1394,8 +1394,8 @@ body {
 
 .modal-actions .secondary-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
 }
 
 .modal-actions .secondary-btn:hover {
@@ -1415,7 +1415,7 @@ body {
 .report-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
@@ -1448,7 +1448,7 @@ body {
 .report-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(60, 72, 180, 0.12);
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 .report-header-section {
@@ -1461,7 +1461,7 @@ body {
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .report-type {
@@ -1471,7 +1471,7 @@ body {
 }
 
 .report-type.audit {
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .report-type.cycle {
@@ -1563,7 +1563,7 @@ body {
 .report-category-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(60, 72, 180, 0.12);
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 .category-icon {
@@ -1574,7 +1574,7 @@ body {
 .category-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-bottom: 0.5rem;
 }
 
@@ -1628,7 +1628,7 @@ body {
 
 .report-detail-section h4 {
     font-size: 1.2rem;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-bottom: 1rem;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 0.5rem;
@@ -1651,7 +1651,7 @@ body {
 .summary-stat-value {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-bottom: 0.3rem;
 }
 
@@ -1673,7 +1673,7 @@ body {
 .reconciliation-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
@@ -1719,7 +1719,7 @@ body {
 
 .reconciliation-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
 
 /* Base Styles */
 body {
@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     display: flex;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     overflow-x: hidden;
     max-width: 100%;
 }
@@ -14,12 +14,12 @@ body {
 .sidebar {
     width: 280px; /* Increased from typical 250px */
     min-width: 280px; /* Ensure minimum width */
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 12px rgba(26,26,255,0.08);
+    box-shadow: 2px 0 12px rgba(255,140,0,0.08);
     position: fixed;
     left: 0;
     top: 0;
@@ -85,11 +85,11 @@ body {
     background: #fff;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(26,26,255,0.10);
+    box-shadow: 0 2px 8px rgba(255,140,0,0.10);
 }
 
 .logout-link {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 700;
     text-decoration: none;
     font-size: 1rem;
@@ -123,7 +123,7 @@ body {
 #dashboard-section h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-top: 0;
     margin-bottom: 1.2rem;
     letter-spacing: 0.5px;
@@ -201,7 +201,7 @@ body {
 .card-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .card-status {
@@ -233,7 +233,7 @@ body {
 
 .data-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -251,7 +251,7 @@ body {
 }
 
 .view-all-link a {
-    color: #1a1aff;
+    color: #ff8c00;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
@@ -280,7 +280,7 @@ body {
 .action-items li:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(60, 72, 180, 0.08);
-    border-color: #1a1aff;
+    border-color: #ff8c00;
 }
 
 .action-priority {
@@ -320,7 +320,7 @@ body {
 }
 
 .action-link {
-    color: #1a1aff;
+    color: #ff8c00;
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
@@ -361,11 +361,11 @@ body {
     height: 14px;
     border-radius: 50%;
     background: #fff;
-    border: 2px solid #1a1aff;
+    border: 2px solid #ff8c00;
 }
 
 .timeline-item.soon::before {
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 .timeline-date {
@@ -441,7 +441,7 @@ body {
 
 .supplier-score {
     font-weight: 600;
-    color: #1a1aff;
+    color: #ff8c00;
     margin-right: 0.5rem;
 }
 
@@ -466,7 +466,7 @@ body {
 
 .status-delivered {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .status-cancelled {
@@ -496,7 +496,7 @@ body {
 }
 
 .status-paid {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -504,14 +504,14 @@ body {
 .action-btn,
 .primary-btn,
 .secondary-btn {
-    background: #1a1aff; 
+    background: #ff8c00; 
     color: #fff;
     border: none;
     border-radius: 25px; 
     padding: 0.7rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     cursor: pointer;
     transition: background-color 0.2s;
     text-align: center;
@@ -528,13 +528,13 @@ body {
 
 .secondary-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
 }
 
 .secondary-btn:hover {
     background: #e0e7ff;
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .table-action-btn {
@@ -563,7 +563,7 @@ body {
     background: #fff;
     padding: 2rem;
     border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(26,26,255,0.18);
+    box-shadow: 0 12px 40px rgba(255,140,0,0.18);
     width: 90%;
     max-width: 500px;
     max-height: 90vh;
@@ -600,14 +600,14 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     background: #f7fafd;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
     background: #fff;
 }
@@ -625,7 +625,7 @@ body {
 .po-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
@@ -648,12 +648,12 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     background: #f7fafd;
 }
 
 .search-filter input:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
 }
 
@@ -662,7 +662,7 @@ body {
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
     font-size: 1rem;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     background: #f7fafd;
 }
 
@@ -755,7 +755,7 @@ body {
 
 .line-items-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -811,7 +811,7 @@ body {
 }
 
 #po-total {
-    color: #1a1aff;
+    color: #ff8c00;
     margin-left: 1rem;
     font-size: 1.4rem;
 }
@@ -869,7 +869,7 @@ body {
 
 .po-items-table th {
     background: #e6eaff;
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -946,7 +946,7 @@ body {
 .suppliers-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
@@ -982,8 +982,8 @@ body {
 
 .view-toggle-btn {
     background: #f0f4ff;
-    color: #1a1aff;
-    border: 1px solid #1a1aff;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
     border-radius: 25px;
     padding: 0.5rem 1rem;
     margin-left: 0.5rem;
@@ -993,7 +993,7 @@ body {
 }
 
 .view-toggle-btn.active {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
 }
 
@@ -1019,7 +1019,7 @@ body {
 }
 
 .supplier-card-header {
-    background: linear-gradient(135deg, #1a1aff 0%, #4f8cff 100%);
+    background: linear-gradient(135deg, #ff8c00 0%, #4f8cff 100%);
     color: white;
     padding: 1.2rem;
     position: relative;
@@ -1043,7 +1043,7 @@ body {
     top: 1rem;
     right: 1rem;
     background: rgba(255, 255, 255, 0.9);
-    color: #1a1aff;
+    color: #ff8c00;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -1071,7 +1071,7 @@ body {
 
 .supplier-info-item i {
     margin-right: 0.5rem;
-    color: #1a1aff;
+    color: #ff8c00;
     min-width: 16px;
 }
 
@@ -1137,12 +1137,12 @@ body {
 
 .supplier-detail-name {
     font-size: 1.8rem;
-    color: #1a1aff;
+    color: #ff8c00;
     margin: 0;
 }
 
 .supplier-detail-rating {
-    background: #1a1aff;
+    background: #ff8c00;
     color: white;
     border-radius: 50%;
     width: 50px;
@@ -1201,7 +1201,7 @@ body {
 }
 
 .tab-button.active {
-    color: #1a1aff;
+    color: #ff8c00;
 }
 
 .tab-button.active::after {
@@ -1211,7 +1211,7 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 .tab-content {
