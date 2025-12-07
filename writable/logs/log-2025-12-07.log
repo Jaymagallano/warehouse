@@ -1,0 +1,124 @@
+ERROR - 2025-12-07 14:14:34 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'warehouse' in C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'warehouse', 3306, '', 0)
+#1 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp\htdocs\warehouse-main\system\Commands\Database\ShowTableInfo.php(121): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp\htdocs\warehouse-main\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\ShowTableInfo->run(Array)
+#6 C:\xampp\htdocs\warehouse-main\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:table', Array)
+#7 C:\xampp\htdocs\warehouse-main\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#8 C:\xampp\htdocs\warehouse-main\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#9 C:\xampp\htdocs\warehouse-main\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'warehouse' in C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp\htdocs\warehouse-main\system\Commands\Database\ShowTableInfo.php(121): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp\htdocs\warehouse-main\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\ShowTableInfo->run(Array)
+#5 C:\xampp\htdocs\warehouse-main\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:table', Array)
+#6 C:\xampp\htdocs\warehouse-main\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#7 C:\xampp\htdocs\warehouse-main\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#8 C:\xampp\htdocs\warehouse-main\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#9 {main}
+CRITICAL - 2025-12-07 14:14:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'warehouse'
+[Method: CLI, Route: db:table]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FROM `warehouse`')
+ 3 SYSTEMPATH\Commands\Database\ShowTableInfo.php(121): CodeIgniter\Database\BaseConnection->listTables()
+ 4 SYSTEMPATH\CLI\Commands.php(74): CodeIgniter\Commands\Database\ShowTableInfo->run([])
+ 5 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:table', [])
+ 6 SYSTEMPATH\Boot.php(388): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 8 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+ERROR - 2025-12-07 14:17:22 --> mysqli_sql_exception: Can't create database 'warehouse'; database exists in C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE DATABASE...', 0)
+#1 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE DATABASE...')
+#2 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE DATABASE...')
+#3 C:\xampp\htdocs\warehouse-main\system\Database\Forge.php(232): CodeIgniter\Database\BaseConnection->query('CREATE DATABASE...')
+#4 C:\xampp\htdocs\warehouse-main\system\Commands\Database\CreateDatabase.php(136): CodeIgniter\Database\Forge->createDatabase('warehouse')
+#5 C:\xampp\htdocs\warehouse-main\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\CreateDatabase->run(Array)
+#6 C:\xampp\htdocs\warehouse-main\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:create', Array)
+#7 C:\xampp\htdocs\warehouse-main\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#8 C:\xampp\htdocs\warehouse-main\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#9 C:\xampp\htdocs\warehouse-main\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#10 {main}
+ERROR - 2025-12-07 14:21:33 --> mysqli_sql_exception: Unknown column 'lead_time' in 'field list' in C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `ma...', 0)
+#1 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ma...')
+#2 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ma...')
+#3 C:\xampp\htdocs\warehouse-main\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ma...', NULL, false)
+#4 C:\xampp\htdocs\warehouse-main\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\warehouse-main\app\Database\Seeds\MaterialSeeder.php(69): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\warehouse-main\system\Database\Seeder.php(149): App\Database\Seeds\MaterialSeeder->run()
+#7 C:\xampp\htdocs\warehouse-main\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\warehouse-main\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\warehouse-main\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\warehouse-main\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\warehouse-main\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\warehouse-main\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-07 14:29:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:31:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:34:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:34:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:39:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:39:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:40:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:44:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:44:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:44:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:53:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:54:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:54:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:57:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:57:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:57:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:57:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 14:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-07 14:58:11 --> mysqli_sql_exception: Duplicate entry 'manager' for key 'username' in C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\warehouse-main\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\warehouse-main\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\warehouse-main\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', NULL, false)
+#4 C:\xampp\htdocs\warehouse-main\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\warehouse-main\app\Database\Seeds\UserSeeder.php(70): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\warehouse-main\system\Database\Seeder.php(149): App\Database\Seeds\UserSeeder->run()
+#7 C:\xampp\htdocs\warehouse-main\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\warehouse-main\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\warehouse-main\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\warehouse-main\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\warehouse-main\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\warehouse-main\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-07 15:00:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:00:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:02:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:02:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:03:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-07 15:03:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
