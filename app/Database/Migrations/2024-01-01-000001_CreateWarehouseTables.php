@@ -25,14 +25,15 @@ class CreateWarehouseTables extends Migration
         // Inventory table
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'item_code' => ['type' => 'VARCHAR', 'constraint' => 50, 'unique' => true],
+            'item_code' => ['type' => 'VARCHAR', 'constraint' => 50, 'null' => true],
             'item_name' => ['type' => 'VARCHAR', 'constraint' => 100],
             'category' => ['type' => 'VARCHAR', 'constraint' => 50],
             'quantity' => ['type' => 'INT', 'constraint' => 11, 'default' => 0],
             'unit' => ['type' => 'VARCHAR', 'constraint' => 20],
-            'location' => ['type' => 'VARCHAR', 'constraint' => 50],
+            'location' => ['type' => 'VARCHAR', 'constraint' => 50, 'null' => true],
             'batch_number' => ['type' => 'VARCHAR', 'constraint' => 50, 'null' => true],
             'expiry_date' => ['type' => 'DATE', 'null' => true],
+            'status' => ['type' => 'VARCHAR', 'constraint' => 20, 'default' => 'OK'],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);

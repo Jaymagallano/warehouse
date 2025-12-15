@@ -12,13 +12,13 @@
             <span class="sidebar-title">Warehouse Manager</span>
         </div>
         <ul>
-            <li><a href="<?= base_url('warehouse-manager/dashboard') ?>" id="dashboard-link">Dashboard</a></li>
-            <li><a href="<?= base_url('warehouse-manager/inventory-overview') ?>" id="inventory-link" class="active">Inventory Overview</a></li>
-            <li><a href="<?= base_url('warehouse-manager/receiving') ?>" id="receiving-link">Receiving</a></li>
-            <li><a href="<?= base_url('warehouse-manager/shipping') ?>" id="shipping-link">Shipping</a></li>
-            <li><a href="<?= base_url('warehouse-manager/approvals') ?>" id="approvals-link">Approvals</a></li>
-            <li><a href="<?= base_url('warehouse-manager/batch-tracking') ?>" id="batch-link">Batch/Lot Tracking</a></li>
-            <li><a href="<?= base_url('warehouse-manager/reports') ?>" id="reports-link">Reports</a></li>
+            <li><a href="<?= base_url('warehouse-manager/dashboard') ?>">Dashboard</a></li>
+            <li><a href="<?= base_url('warehouse-manager/inventory-overview') ?>" class="active">Inventory Overview</a></li>
+            <li><a href="<?= base_url('warehouse-manager/receiving') ?>">Receiving</a></li>
+            <li><a href="<?= base_url('warehouse-manager/shipping') ?>">Shipping</a></li>
+            <li><a href="<?= base_url('warehouse-manager/approvals') ?>">Approvals</a></li>
+            <li><a href="<?= base_url('warehouse-manager/batch-tracking') ?>">Batch/Lot Tracking</a></li>
+            <li><a href="<?= base_url('warehouse-manager/reports') ?>">Reports</a></li>
         </ul>
         <div class="logout-box">
             <a href="<?= base_url('auth/logout') ?>" class="logout-link">Logout</a>
@@ -34,15 +34,13 @@
                         <tr>
                             <th>Material Name</th>
                             <th>Category</th>
-                            <th>Stock</th>
+                            <th>Quantity</th>
                             <th>Unit</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="inventory-table-body">
-                        <!-- JS will populate -->
-                    </tbody>
+                    <tbody id="inventory-table-body"></tbody>
                 </table>
             </div>
         </div>
@@ -53,16 +51,17 @@
         <div class="modal-content">
             <span class="close" id="closeAddModal">&times;</span>
             <h3>Add Inventory Item</h3>
-            <form id="addInventoryForm" method="post" action="<?= base_url('warehouse-manager/add-inventory') ?>">
+            <form id="addInventoryForm">
                 <?= csrf_field() ?>
-                <label for="materialName">Material Name</label>
-                <input type="text" id="materialName" name="materialName" required>
+
+                <label for="item_name">Material Name</label>
+                <input type="text" id="item_name" name="item_name" required>
 
                 <label for="category">Category</label>
                 <input type="text" id="category" name="category" required>
 
-                <label for="stock">Stock</label>
-                <input type="number" id="stock" name="stock" min="0" required>
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" min="0" required>
 
                 <label for="unit">Unit</label>
                 <input type="text" id="unit" name="unit" required>
@@ -86,22 +85,22 @@
         <div class="modal-content">
             <span class="close" id="closeEditModal">&times;</span>
             <h3>Edit Inventory Item</h3>
-            <form id="editInventoryForm" method="post" action="<?= base_url('warehouse-manager/edit-inventory') ?>">
+            <form id="editInventoryForm">
                 <?= csrf_field() ?>
                 <label for="editMaterialName">Material Name</label>
-                <input type="text" id="editMaterialName" name="editMaterialName" required>
+                <input type="text" id="editMaterialName" name="item_name" required>
 
                 <label for="editCategory">Category</label>
-                <input type="text" id="editCategory" name="editCategory" required>
+                <input type="text" id="editCategory" name="category" required>
 
-                <label for="editStock">Stock</label>
-                <input type="number" id="editStock" name="editStock" min="0" required>
+                <label for="editQuantity">Quantity</label>
+                <input type="number" id="editQuantity" name="quantity" min="0" required>
 
                 <label for="editUnit">Unit</label>
-                <input type="text" id="editUnit" name="editUnit" required>
+                <input type="text" id="editUnit" name="unit" required>
 
                 <label for="editStatus">Status</label>
-                <select id="editStatus" name="editStatus" required>
+                <select id="editStatus" name="status" required>
                     <option value="">Select Status...</option>
                     <option value="OK">OK</option>
                     <option value="Low">Low</option>

@@ -1,144 +1,187 @@
-let shipments = [
-    { id: "SHP-001", destination: "Site A", material: "Cement", quantity: 100, date: "2024-07-01", status: "Pending" },
-    { id: "SHP-002", destination: "Site B", material: "Rebar", quantity: 50, date: "2024-07-02", status: "Shipped" },
-    { id: "SHP-003", destination: "Site C", material: "Paint", quantity: 20, date: "2024-07-03", status: "Delivered" }
-];
+const BASE_URL = window.location.origin;
+let shippingList = [];
+let editId = null;
+let deleteId = null;
 
-function renderShipments() {
+async function fetchShipping() {
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/shipping/list`);
+        const result = await response.json();
+        if (result.status === 'success') {
+            shippingList = result.data || [];
+            renderShipping();
+        }
+    } catch (error) {
+        console.error('Error fetching shipping:', error);
+        renderShipping();
+    }
+}
+
+function renderShipping() {
     const tbody = document.getElementById('shipping-table-body');
     tbody.innerHTML = "";
-    shipments.forEach((s, idx) => {
+    
+    if (shippingList.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No shipments found</td></tr>';
+        return;
+    }
+    
+    shippingList.forEach((item) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${s.id}</td>
-            <td>${s.destination}</td>
-            <td>${s.material}</td>
-            <td>${s.quantity}</td>
-            <td>${s.date}</td>
-            <td class="status-${s.status.toLowerCase()}">${s.status}</td>
+            <td>${item.shipment_number || ''}</td>
+            <td>${item.customer_id || 'N/A'}</td>
+            <td>${item.material || 'N/A'}</td>
+            <td>${item.quantity || 'N/A'}</td>
+            <td>${item.expected_date || ''}</td>
+            <td class="status-${(item.status || '').toLowerCase()}">${item.status || ''}</td>
             <td>
-                <button class="action-btn" onclick="viewShipment(${idx})">View</button>
-                <button class="action-btn" onclick="openEditModal(${idx})">Edit</button>
-                <button class="action-btn" onclick="openDeleteModal(${idx})">Delete</button>
+                <button class="action-btn" onclick="viewShipping(${item.id})">View</button>
+                <button class="action-btn" onclick="openEditModal(${item.id})">Edit</button>
+                <button class="action-btn" onclick="openDeleteModal(${item.id})">Delete</button>
             </td>
         `;
         tbody.appendChild(tr);
     });
 }
 
-// View Modal logic
-const viewModal = document.getElementById('viewModal');
-const closeViewModal = document.getElementById('closeViewModal');
-const viewShippingDetails = document.getElementById('viewShippingDetails');
-function viewShipment(idx) {
-    const s = shipments[idx];
-    viewShippingDetails.innerHTML = `
-        <strong>Shipment ID:</strong> ${s.id}<br>
-        <strong>Destination:</strong> ${s.destination}<br>
-        <strong>Material:</strong> ${s.material}<br>
-        <strong>Quantity:</strong> ${s.quantity}<br>
-        <strong>Date:</strong> ${s.date}<br>
-        <strong>Status:</strong> ${s.status}
-    `;
-    viewModal.style.display = "flex";
-}
-closeViewModal.onclick = () => { viewModal.style.display = "none"; };
-
-// Delete Modal logic
-const deleteModal = document.getElementById('deleteModal');
-const closeDeleteModal = document.getElementById('closeDeleteModal');
-const deleteShippingDetails = document.getElementById('deleteShippingDetails');
-const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-let deleteIdx = null;
-function openDeleteModal(idx) {
-    const s = shipments[idx];
-    deleteShippingDetails.innerHTML = `
-        Are you sure you want to delete <strong>${s.id}</strong> (${s.material})?
-    `;
-    deleteModal.style.display = "flex";
-    deleteIdx = idx;
-}
-closeDeleteModal.onclick = () => { deleteModal.style.display = "none"; };
-cancelDeleteBtn.onclick = () => { deleteModal.style.display = "none"; };
-confirmDeleteBtn.onclick = () => {
-    if (deleteIdx !== null) {
-        shipments.splice(deleteIdx, 1);
-        renderShipments();
-        deleteModal.style.display = "none";
-        deleteIdx = null;
+async function viewShipping(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/shipping/${id}`);
+        const result = await response.json();
+        if (result.status === 'success') {
+            const item = result.data;
+            document.getElementById('viewShippingDetails').innerHTML = `
+                <strong>Shipment Number:</strong> ${item.shipment_number || 'N/A'}<br>
+                <strong>Customer:</strong> ${item.customer_id || 'N/A'}<br>
+                <strong>Expected Date:</strong> ${item.expected_date || 'N/A'}<br>
+                <strong>Actual Date:</strong> ${item.actual_date || 'N/A'}<br>
+                <strong>Status:</strong> ${item.status || 'N/A'}
+            `;
+            document.getElementById('viewModal').style.display = "flex";
+        }
+    } catch (error) {
+        console.error('Error viewing shipping:', error);
     }
-};
-
-// Modal logic for Add/Edit
-const addModal = document.getElementById('addModal');
-const openAddModalBtn = document.getElementById('openAddModalBtn');
-const closeAddModal = document.getElementById('closeAddModal');
-openAddModalBtn.onclick = () => { addModal.style.display = "flex"; };
-closeAddModal.onclick = () => { addModal.style.display = "none"; };
-
-const editModal = document.getElementById('editModal');
-const closeEditModal = document.getElementById('closeEditModal');
-closeEditModal.onclick = () => { editModal.style.display = "none"; };
-
-window.openEditModal = openEditModal;
-window.viewShipment = viewShipment;
-window.openDeleteModal = openDeleteModal;
-
-// Add Shipment Form
-document.getElementById('addShippingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const newShipment = {
-        id: document.getElementById('shipmentId').value,
-        destination: document.getElementById('destination').value,
-        material: document.getElementById('material').value,
-        quantity: document.getElementById('quantity').value,
-        date: document.getElementById('date').value,
-        status: document.getElementById('status').value
-    };
-    shipments.push(newShipment);
-    renderShipments();
-    document.getElementById('addSuccessMsg').textContent = 'Shipment added successfully!';
-    document.getElementById('addSuccessMsg').style.display = 'block';
-    setTimeout(() => {
-        document.getElementById('addSuccessMsg').style.display = 'none';
-        document.getElementById('addShippingForm').reset();
-        addModal.style.display = "none";
-    }, 1200);
-});
-
-// Edit Shipment Modal logic
-function openEditModal(idx) {
-    const s = shipments[idx];
-    document.getElementById('editShipmentId').value = s.id;
-    document.getElementById('editDestination').value = s.destination;
-    document.getElementById('editMaterial').value = s.material;
-    document.getElementById('editQuantity').value = s.quantity;
-    document.getElementById('editDate').value = s.date;
-    document.getElementById('editStatus').value = s.status;
-    editModal.style.display = "flex";
-    editModal.dataset.idx = idx;
 }
 
-// Edit Shipment Form
-document.getElementById('editShippingForm').addEventListener('submit', function(e) {
+function openDeleteModal(id) {
+    const item = shippingList.find(i => i.id == id);
+    if (item) {
+        document.getElementById('deleteShippingDetails').innerHTML = `
+            Are you sure you want to delete shipment <strong>${item.shipment_number}</strong>?
+        `;
+        document.getElementById('deleteModal').style.display = "flex";
+        deleteId = id;
+    }
+}
+
+async function deleteShipping() {
+    if (deleteId !== null) {
+        try {
+            const response = await fetch(`${BASE_URL}/warehouse-manager/shipping/delete/${deleteId}`, {
+                method: 'POST'
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                fetchShipping();
+                document.getElementById('deleteModal').style.display = "none";
+                deleteId = null;
+            } else {
+                alert(result.message || 'Failed to delete');
+            }
+        } catch (error) {
+            console.error('Error deleting:', error);
+        }
+    }
+}
+
+
+async function openEditModal(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/shipping/${id}`);
+        const result = await response.json();
+        if (result.status === 'success') {
+            const item = result.data;
+            document.getElementById('editShipmentId').value = item.shipment_number || '';
+            document.getElementById('editDestination').value = item.customer_id || '';
+            document.getElementById('editExpectedDate').value = item.expected_date || '';
+            document.getElementById('editActualDate').value = item.actual_date || '';
+            document.getElementById('editStatus').value = item.status || '';
+            document.getElementById('editModal').style.display = "flex";
+            editId = id;
+        }
+    } catch (error) {
+        console.error('Error fetching for edit:', error);
+    }
+}
+
+const addModal = document.getElementById('addModal');
+const editModal = document.getElementById('editModal');
+const viewModal = document.getElementById('viewModal');
+const deleteModal = document.getElementById('deleteModal');
+
+document.getElementById('openAddModalBtn').onclick = () => { addModal.style.display = "flex"; };
+document.getElementById('closeAddModal').onclick = () => { addModal.style.display = "none"; };
+document.getElementById('closeEditModal').onclick = () => { editModal.style.display = "none"; };
+document.getElementById('closeViewModal').onclick = () => { viewModal.style.display = "none"; };
+document.getElementById('closeDeleteModal').onclick = () => { deleteModal.style.display = "none"; };
+document.getElementById('cancelDeleteBtn').onclick = () => { deleteModal.style.display = "none"; };
+document.getElementById('confirmDeleteBtn').onclick = deleteShipping;
+
+document.getElementById('addShippingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const idx = editModal.dataset.idx;
-    shipments[idx].destination = document.getElementById('editDestination').value;
-    shipments[idx].material = document.getElementById('editMaterial').value;
-    shipments[idx].quantity = document.getElementById('editQuantity').value;
-    shipments[idx].date = document.getElementById('editDate').value;
-    shipments[idx].status = document.getElementById('editStatus').value;
-    renderShipments();
-    document.getElementById('editSuccessMsg').textContent = 'Shipment updated successfully!';
-    document.getElementById('editSuccessMsg').style.display = 'block';
-    setTimeout(() => {
-        document.getElementById('editSuccessMsg').style.display = 'none';
-        editModal.style.display = "none";
-    }, 1200);
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/shipping/add`, {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+            document.getElementById('addSuccessMsg').textContent = 'Shipment added successfully!';
+            document.getElementById('addSuccessMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('addSuccessMsg').style.display = 'none';
+                this.reset();
+                addModal.style.display = "none";
+                fetchShipping();
+            }, 1200);
+        } else {
+            alert(result.message || 'Failed to add');
+        }
+    } catch (error) {
+        console.error('Error adding:', error);
+    }
 });
 
-// Global modal close on background click
+document.getElementById('editShippingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/shipping/update/${editId}`, {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+            document.getElementById('editSuccessMsg').textContent = 'Shipment updated successfully!';
+            document.getElementById('editSuccessMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('editSuccessMsg').style.display = 'none';
+                editModal.style.display = "none";
+                fetchShipping();
+            }, 1200);
+        } else {
+            alert(result.message || 'Failed to update');
+        }
+    } catch (error) {
+        console.error('Error updating:', error);
+    }
+});
+
 window.onclick = function(event) {
     if (event.target === addModal) addModal.style.display = "none";
     if (event.target === editModal) editModal.style.display = "none";
@@ -146,5 +189,8 @@ window.onclick = function(event) {
     if (event.target === deleteModal) deleteModal.style.display = "none";
 };
 
-// Initial render
-renderShipments();
+window.viewShipping = viewShipping;
+window.openEditModal = openEditModal;
+window.openDeleteModal = openDeleteModal;
+
+fetchShipping();

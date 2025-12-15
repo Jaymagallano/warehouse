@@ -8,7 +8,7 @@ class InventoryModel extends Model
 {
     protected $table = 'inventory';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['item_code', 'item_name', 'category', 'quantity', 'unit', 'location', 'batch_number', 'expiry_date'];
+    protected $allowedFields = ['item_code', 'item_name', 'category', 'quantity', 'unit', 'location', 'batch_number', 'expiry_date', 'status'];
     protected $useTimestamps = true;
 
     public function getSummary()
@@ -22,7 +22,7 @@ class InventoryModel extends Model
 
     public function getBatches()
     {
-        return $this->select('batch_number, item_name, quantity, expiry_date')
+        return $this->select('id, batch_number, item_name, quantity, location, expiry_date')
                    ->where('batch_number IS NOT NULL')
                    ->findAll();
     }

@@ -34,19 +34,27 @@
                             <th>Request ID</th>
                             <th>Type</th>
                             <th>Description</th>
-                            <th>Destination</th>
+                            <th>Reference</th>
                             <th>Date</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="approvals-table-body">
-                        <!-- JS will populate -->
-                    </tbody>
+                    <tbody id="approvals-table-body"></tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <!-- View Approval Modal -->
+    <div class="modal" id="viewModal">
+        <div class="modal-content">
+            <span class="close" id="closeViewModal">&times;</span>
+            <h3>Approval Request Details</h3>
+            <div id="viewApprovalDetails"></div>
+        </div>
+    </div>
+
     <script src="<?= base_url('assets/js/wm-approvals.js') ?>"></script>
 </body>
 </html>

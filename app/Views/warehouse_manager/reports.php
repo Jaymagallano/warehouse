@@ -27,40 +27,37 @@
     <div class="main-content">
         <div class="dashboard-section" id="reports-section">
             <h2>Reports</h2>
-            <form id="reportFilterForm" class="report-filter-form" method="post" action="<?= base_url('warehouse-manager/generate-report') ?>">
-                <?= csrf_field() ?>
-                <label for="reportType">Report Type:</label>
-                <select id="reportType" name="reportType">
-                    <option value="inventory">Inventory Overview</option>
-                    <option value="lowstock">Low Stock Alerts</option>
-                    <option value="movement">Stock Movement Logs</option>
-                    <option value="approval">Approval Requests</option>
-                    <option value="summary">Warehouse Reports</option>
-                    <option value="batch">Batch/Lot Tracking</option>
-                </select>
-                <label for="fromDate">From:</label>
-                <input type="date" id="fromDate" name="fromDate">
-                <label for="toDate">To:</label>
-                <input type="date" id="toDate" name="toDate">
-                <button type="submit">Generate</button>
-            </form>
-            <div class="reports-table-wrapper">
-                <table class="reports-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody id="reports-table-body">
-                        <!-- JS will populate -->
-                    </tbody>
-                </table>
+            <div class="report-filters">
+                <div class="filter-group">
+                    <label for="reportType">Report Type</label>
+                    <select id="reportType">
+                        <option value="">Select Report Type...</option>
+                        <option value="inventory">Inventory Report</option>
+                        <option value="receiving">Receiving Report</option>
+                        <option value="shipping">Shipping Report</option>
+                        <option value="approvals">Approvals Report</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="filter-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate">
+                </div>
+                <div class="filter-actions">
+                    <button id="generateReportBtn" class="action-btn">Generate Report</button>
+                    <button id="exportPdfBtn" class="action-btn">Export PDF</button>
+                    <button id="exportExcelBtn" class="action-btn">Export Excel</button>
+                </div>
+            </div>
+            <div class="report-content" id="reportContent">
+                <p>Select a report type and click "Generate Report" to view data.</p>
             </div>
         </div>
     </div>
+
     <script src="<?= base_url('assets/js/wm-reports.js') ?>"></script>
 </body>
 </html>

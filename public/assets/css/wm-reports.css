@@ -187,3 +187,121 @@ body {
 .reports-table td {
     color: #333;
 }
+
+
+/* Report Filters */
+.report-filters {
+    background: #f7fafd;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(60, 72, 180, 0.08);
+}
+
+.filter-group {
+    display: inline-block;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.6rem 1rem;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-width: 180px;
+    background: #fff;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #1a1aff;
+    outline: none;
+}
+
+.filter-actions {
+    margin-top: 1rem;
+}
+
+.action-btn {
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    transition: background 0.2s;
+}
+
+.action-btn:hover {
+    background: #1a1aff;
+}
+
+/* Report Content */
+.report-content {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    min-height: 300px;
+}
+
+.report-content h3 {
+    color: #1a1aff;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f7fafd;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+.report-table th,
+.report-table td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.report-table th {
+    background: #e6eaff;
+    color: #1a1aff;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.report-table tr:last-child td {
+    border-bottom: none;
+}
+
+.report-table tr:hover {
+    background: #f0f4ff;
+}
+
+/* Print Styles */
+@media print {
+    .sidebar, .report-filters, .filter-actions {
+        display: none !important;
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 0;
+    }
+}

@@ -41,9 +41,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="shipping-table-body">
-                        <!-- JS will populate -->
-                    </tbody>
+                    <tbody id="shipping-table-body"></tbody>
                 </table>
             </div>
         </div>
@@ -54,30 +52,27 @@
         <div class="modal-content">
             <span class="close" id="closeAddModal">&times;</span>
             <h3>Add Shipment</h3>
-            <form id="addShippingForm" method="post" action="<?= base_url('warehouse-manager/add-shipment') ?>">
+            <form id="addShippingForm">
                 <?= csrf_field() ?>
-                <label for="shipmentId">Shipment ID</label>
-                <input type="text" id="shipmentId" name="shipmentId" required>
+                <label for="shipment_number">Shipment Number</label>
+                <input type="text" id="shipment_number" name="shipment_number" required>
 
-                <label for="destination">Destination</label>
-                <input type="text" id="destination" name="destination" required>
+                <label for="customer_id">Customer/Destination</label>
+                <input type="text" id="customer_id" name="customer_id" required>
 
-                <label for="material">Material</label>
-                <input type="text" id="material" name="material" required>
+                <label for="expected_date">Expected Date</label>
+                <input type="date" id="expected_date" name="expected_date" required>
 
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" min="1" required>
-
-                <label for="date">Shipment Date</label>
-                <input type="date" id="date" name="date" required>
+                <label for="actual_date">Actual Date</label>
+                <input type="date" id="actual_date" name="actual_date">
 
                 <label for="status">Status</label>
                 <select id="status" name="status" required>
                     <option value="">Select Status...</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Shipped">Shipped</option>
-                    <option value="Delivered">Delivered</option>
-                    <option value="Cancelled">Cancelled</option>
+                    <option value="pending">Pending</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
                 </select>
 
                 <button type="submit">Add Shipment</button>
@@ -86,35 +81,33 @@
         </div>
     </div>
 
+
     <!-- Edit Shipment Modal -->
     <div class="modal" id="editModal">
         <div class="modal-content">
             <span class="close" id="closeEditModal">&times;</span>
             <h3>Edit Shipment</h3>
-            <form id="editShippingForm" method="post" action="<?= base_url('warehouse-manager/edit-shipment') ?>">
+            <form id="editShippingForm">
                 <?= csrf_field() ?>
-                <label for="editShipmentId">Shipment ID</label>
-                <input type="text" id="editShipmentId" name="editShipmentId" required readonly>
+                <label for="editShipmentId">Shipment Number</label>
+                <input type="text" id="editShipmentId" name="shipment_number" required>
 
-                <label for="editDestination">Destination</label>
-                <input type="text" id="editDestination" name="editDestination" required>
+                <label for="editDestination">Customer/Destination</label>
+                <input type="text" id="editDestination" name="customer_id" required>
 
-                <label for="editMaterial">Material</label>
-                <input type="text" id="editMaterial" name="editMaterial" required>
+                <label for="editExpectedDate">Expected Date</label>
+                <input type="date" id="editExpectedDate" name="expected_date" required>
 
-                <label for="editQuantity">Quantity</label>
-                <input type="number" id="editQuantity" name="editQuantity" min="1" required>
-
-                <label for="editDate">Shipment Date</label>
-                <input type="date" id="editDate" name="editDate" required>
+                <label for="editActualDate">Actual Date</label>
+                <input type="date" id="editActualDate" name="actual_date">
 
                 <label for="editStatus">Status</label>
-                <select id="editStatus" name="editStatus" required>
+                <select id="editStatus" name="status" required>
                     <option value="">Select Status...</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Shipped">Shipped</option>
-                    <option value="Delivered">Delivered</option>
-                    <option value="Cancelled">Cancelled</option>
+                    <option value="pending">Pending</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
                 </select>
 
                 <button type="submit">Save Changes</button>

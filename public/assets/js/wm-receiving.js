@@ -1,144 +1,196 @@
-let receivings = [
-    { refNo: "RCV-001", supplier: "Supplier X", material: "Cement", quantity: 100, dateReceived: "2024-07-01", status: "Received" },
-    { refNo: "RCV-002", supplier: "Supplier Y", material: "Rebar", quantity: 50, dateReceived: "2024-07-02", status: "Pending" },
-    { refNo: "RCV-003", supplier: "Supplier Z", material: "Paint", quantity: 20, dateReceived: "2024-07-03", status: "Damaged" }
-];
+const BASE_URL = window.location.origin;
+let receivingList = [];
+let editId = null;
+let deleteId = null;
 
-function renderReceivings() {
+// Fetch receiving list from API
+async function fetchReceiving() {
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/receiving/list`);
+        const result = await response.json();
+        if (result.status === 'success') {
+            receivingList = result.data || [];
+            renderReceiving();
+        }
+    } catch (error) {
+        console.error('Error fetching receiving:', error);
+        renderReceiving();
+    }
+}
+
+function renderReceiving() {
     const tbody = document.getElementById('receiving-table-body');
     tbody.innerHTML = "";
-    receivings.forEach((item, idx) => {
+    
+    if (receivingList.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No receiving records found</td></tr>';
+        return;
+    }
+    
+    receivingList.forEach((item) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${item.refNo}</td>
-            <td>${item.supplier}</td>
-            <td>${item.material}</td>
-            <td>${item.quantity}</td>
-            <td>${item.dateReceived}</td>
-            <td class="status-${item.status.toLowerCase()}">${item.status}</td>
+            <td>${item.shipment_number || ''}</td>
+            <td>${item.supplier_id || 'N/A'}</td>
+            <td>${item.material || 'N/A'}</td>
+            <td>${item.quantity || 'N/A'}</td>
+            <td>${item.actual_date || item.expected_date || ''}</td>
+            <td class="status-${(item.status || '').toLowerCase()}">${item.status || ''}</td>
             <td>
-                <button class="action-btn" onclick="viewReceiving(${idx})">View</button>
-                <button class="action-btn" onclick="openEditModal(${idx})">Edit</button>
-                <button class="action-btn" onclick="openDeleteModal(${idx})">Delete</button>
+                <button class="action-btn" onclick="viewReceiving(${item.id})">View</button>
+                <button class="action-btn" onclick="openEditModal(${item.id})">Edit</button>
+                <button class="action-btn" onclick="openDeleteModal(${item.id})">Delete</button>
             </td>
         `;
         tbody.appendChild(tr);
     });
 }
 
-// View Modal logic
-const viewModal = document.getElementById('viewModal');
-const closeViewModal = document.getElementById('closeViewModal');
-const viewReceivingDetails = document.getElementById('viewReceivingDetails');
-function viewReceiving(idx) {
-    const item = receivings[idx];
-    viewReceivingDetails.innerHTML = `
-        <strong>Reference No.:</strong> ${item.refNo}<br>
-        <strong>Supplier:</strong> ${item.supplier}<br>
-        <strong>Material:</strong> ${item.material}<br>
-        <strong>Quantity:</strong> ${item.quantity}<br>
-        <strong>Date Received:</strong> ${item.dateReceived}<br>
-        <strong>Status:</strong> ${item.status}
-    `;
-    viewModal.style.display = "flex";
-}
-closeViewModal.onclick = () => { viewModal.style.display = "none"; };
-
-// Delete Modal logic
-const deleteModal = document.getElementById('deleteModal');
-const closeDeleteModal = document.getElementById('closeDeleteModal');
-const deleteReceivingDetails = document.getElementById('deleteReceivingDetails');
-const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-let deleteIdx = null;
-function openDeleteModal(idx) {
-    const item = receivings[idx];
-    deleteReceivingDetails.innerHTML = `
-        Are you sure you want to delete <strong>${item.refNo}</strong> (${item.material})?
-    `;
-    deleteModal.style.display = "flex";
-    deleteIdx = idx;
-}
-closeDeleteModal.onclick = () => { deleteModal.style.display = "none"; };
-cancelDeleteBtn.onclick = () => { deleteModal.style.display = "none"; };
-confirmDeleteBtn.onclick = () => {
-    if (deleteIdx !== null) {
-        receivings.splice(deleteIdx, 1);
-        renderReceivings();
-        deleteModal.style.display = "none";
-        deleteIdx = null;
+// View Receiving
+async function viewReceiving(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/receiving/${id}`);
+        const result = await response.json();
+        if (result.status === 'success') {
+            const item = result.data;
+            document.getElementById('viewReceivingDetails').innerHTML = `
+                <strong>Shipment Number:</strong> ${item.shipment_number || 'N/A'}<br>
+                <strong>Supplier:</strong> ${item.supplier_id || 'N/A'}<br>
+                <strong>Expected Date:</strong> ${item.expected_date || 'N/A'}<br>
+                <strong>Actual Date:</strong> ${item.actual_date || 'N/A'}<br>
+                <strong>Status:</strong> ${item.status || 'N/A'}
+            `;
+            document.getElementById('viewModal').style.display = "flex";
+        }
+    } catch (error) {
+        console.error('Error viewing receiving:', error);
     }
-};
+}
 
-// Modal logic for Add/Edit
+// Delete Modal
+function openDeleteModal(id) {
+    const item = receivingList.find(i => i.id == id);
+    if (item) {
+        document.getElementById('deleteReceivingDetails').innerHTML = `
+            Are you sure you want to delete receiving <strong>${item.shipment_number}</strong>?
+        `;
+        document.getElementById('deleteModal').style.display = "flex";
+        deleteId = id;
+    }
+}
+
+async function deleteReceiving() {
+    if (deleteId !== null) {
+        try {
+            const response = await fetch(`${BASE_URL}/warehouse-manager/receiving/delete/${deleteId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                fetchReceiving();
+                document.getElementById('deleteModal').style.display = "none";
+                deleteId = null;
+            } else {
+                alert(result.message || 'Failed to delete');
+            }
+        } catch (error) {
+            console.error('Error deleting:', error);
+        }
+    }
+}
+
+
+// Edit Modal
+async function openEditModal(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/receiving/${id}`);
+        const result = await response.json();
+        if (result.status === 'success') {
+            const item = result.data;
+            document.getElementById('editRefNo').value = item.shipment_number || '';
+            document.getElementById('editSupplier').value = item.supplier_id || '';
+            document.getElementById('editExpectedDate').value = item.expected_date || '';
+            document.getElementById('editActualDate').value = item.actual_date || '';
+            document.getElementById('editStatus').value = item.status || '';
+            document.getElementById('editModal').style.display = "flex";
+            editId = id;
+        }
+    } catch (error) {
+        console.error('Error fetching for edit:', error);
+    }
+}
+
+// Modal elements
 const addModal = document.getElementById('addModal');
-const openAddModalBtn = document.getElementById('openAddModalBtn');
-const closeAddModal = document.getElementById('closeAddModal');
-openAddModalBtn.onclick = () => { addModal.style.display = "flex"; };
-closeAddModal.onclick = () => { addModal.style.display = "none"; };
-
 const editModal = document.getElementById('editModal');
-const closeEditModal = document.getElementById('closeEditModal');
-closeEditModal.onclick = () => { editModal.style.display = "none"; };
+const viewModal = document.getElementById('viewModal');
+const deleteModal = document.getElementById('deleteModal');
 
-window.openEditModal = openEditModal;
-window.viewReceiving = viewReceiving;
-window.openDeleteModal = openDeleteModal;
+document.getElementById('openAddModalBtn').onclick = () => { addModal.style.display = "flex"; };
+document.getElementById('closeAddModal').onclick = () => { addModal.style.display = "none"; };
+document.getElementById('closeEditModal').onclick = () => { editModal.style.display = "none"; };
+document.getElementById('closeViewModal').onclick = () => { viewModal.style.display = "none"; };
+document.getElementById('closeDeleteModal').onclick = () => { deleteModal.style.display = "none"; };
+document.getElementById('cancelDeleteBtn').onclick = () => { deleteModal.style.display = "none"; };
+document.getElementById('confirmDeleteBtn').onclick = deleteReceiving;
 
 // Add Receiving Form
-document.getElementById('addReceivingForm').addEventListener('submit', function(e) {
+document.getElementById('addReceivingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const newItem = {
-        refNo: document.getElementById('refNo').value,
-        supplier: document.getElementById('supplier').value,
-        material: document.getElementById('material').value,
-        quantity: document.getElementById('quantity').value,
-        dateReceived: document.getElementById('dateReceived').value,
-        status: document.getElementById('status').value
-    };
-    receivings.push(newItem);
-    renderReceivings();
-    document.getElementById('addSuccessMsg').textContent = 'Receiving added successfully!';
-    document.getElementById('addSuccessMsg').style.display = 'block';
-    setTimeout(() => {
-        document.getElementById('addSuccessMsg').style.display = 'none';
-        document.getElementById('addReceivingForm').reset();
-        addModal.style.display = "none";
-    }, 1200);
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/receiving/add`, {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+            document.getElementById('addSuccessMsg').textContent = 'Receiving added successfully!';
+            document.getElementById('addSuccessMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('addSuccessMsg').style.display = 'none';
+                this.reset();
+                addModal.style.display = "none";
+                fetchReceiving();
+            }, 1200);
+        } else {
+            alert(result.message || 'Failed to add');
+        }
+    } catch (error) {
+        console.error('Error adding:', error);
+    }
 });
-
-// Edit Receiving Modal logic
-function openEditModal(idx) {
-    const item = receivings[idx];
-    document.getElementById('editRefNo').value = item.refNo;
-    document.getElementById('editSupplier').value = item.supplier;
-    document.getElementById('editMaterial').value = item.material;
-    document.getElementById('editQuantity').value = item.quantity;
-    document.getElementById('editDateReceived').value = item.dateReceived;
-    document.getElementById('editStatus').value = item.status;
-    editModal.style.display = "flex";
-    editModal.dataset.idx = idx;
-}
 
 // Edit Receiving Form
-document.getElementById('editReceivingForm').addEventListener('submit', function(e) {
+document.getElementById('editReceivingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const idx = editModal.dataset.idx;
-    receivings[idx].supplier = document.getElementById('editSupplier').value;
-    receivings[idx].material = document.getElementById('editMaterial').value;
-    receivings[idx].quantity = document.getElementById('editQuantity').value;
-    receivings[idx].dateReceived = document.getElementById('editDateReceived').value;
-    receivings[idx].status = document.getElementById('editStatus').value;
-    renderReceivings();
-    document.getElementById('editSuccessMsg').textContent = 'Receiving updated successfully!';
-    document.getElementById('editSuccessMsg').style.display = 'block';
-    setTimeout(() => {
-        document.getElementById('editSuccessMsg').style.display = 'none';
-        editModal.style.display = "none";
-    }, 1200);
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch(`${BASE_URL}/warehouse-manager/receiving/update/${editId}`, {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+            document.getElementById('editSuccessMsg').textContent = 'Receiving updated successfully!';
+            document.getElementById('editSuccessMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('editSuccessMsg').style.display = 'none';
+                editModal.style.display = "none";
+                fetchReceiving();
+            }, 1200);
+        } else {
+            alert(result.message || 'Failed to update');
+        }
+    } catch (error) {
+        console.error('Error updating:', error);
+    }
 });
 
-// Global modal close on background click
+// Global modal close
 window.onclick = function(event) {
     if (event.target === addModal) addModal.style.display = "none";
     if (event.target === editModal) editModal.style.display = "none";
@@ -146,5 +198,8 @@ window.onclick = function(event) {
     if (event.target === deleteModal) deleteModal.style.display = "none";
 };
 
-// Initial render
-renderReceivings();
+window.viewReceiving = viewReceiving;
+window.openEditModal = openEditModal;
+window.openDeleteModal = openDeleteModal;
+
+fetchReceiving();

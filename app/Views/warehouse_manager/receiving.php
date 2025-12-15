@@ -32,7 +32,7 @@
                 <table class="receiving-table">
                     <thead>
                         <tr>
-                            <th>Reference No.</th>
+                            <th>Shipment No.</th>
                             <th>Supplier</th>
                             <th>Material</th>
                             <th>Quantity</th>
@@ -41,9 +41,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="receiving-table-body">
-                        <!-- JS will populate -->
-                    </tbody>
+                    <tbody id="receiving-table-body"></tbody>
                 </table>
             </div>
         </div>
@@ -54,29 +52,26 @@
         <div class="modal-content">
             <span class="close" id="closeAddModal">&times;</span>
             <h3>Add Receiving</h3>
-            <form id="addReceivingForm" method="post" action="<?= base_url('warehouse-manager/add-receiving') ?>">
+            <form id="addReceivingForm">
                 <?= csrf_field() ?>
-                <label for="refNo">Reference No.</label>
-                <input type="text" id="refNo" name="refNo" required>
+                <label for="shipment_number">Shipment Number</label>
+                <input type="text" id="shipment_number" name="shipment_number" required>
 
-                <label for="supplier">Supplier</label>
-                <input type="text" id="supplier" name="supplier" required>
+                <label for="supplier_id">Supplier ID</label>
+                <input type="text" id="supplier_id" name="supplier_id" required>
 
-                <label for="material">Material</label>
-                <input type="text" id="material" name="material" required>
+                <label for="expected_date">Expected Date</label>
+                <input type="date" id="expected_date" name="expected_date" required>
 
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" min="1" required>
-
-                <label for="dateReceived">Date Received</label>
-                <input type="date" id="dateReceived" name="dateReceived" required>
+                <label for="actual_date">Actual Date</label>
+                <input type="date" id="actual_date" name="actual_date">
 
                 <label for="status">Status</label>
                 <select id="status" name="status" required>
                     <option value="">Select Status...</option>
-                    <option value="Received">Received</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Damaged">Damaged</option>
+                    <option value="pending">Pending</option>
+                    <option value="received">Received</option>
+                    <option value="damaged">Damaged</option>
                 </select>
 
                 <button type="submit">Add Receiving</button>
@@ -85,34 +80,32 @@
         </div>
     </div>
 
+
     <!-- Edit Receiving Modal -->
     <div class="modal" id="editModal">
         <div class="modal-content">
             <span class="close" id="closeEditModal">&times;</span>
             <h3>Edit Receiving</h3>
-            <form id="editReceivingForm" method="post" action="<?= base_url('warehouse-manager/edit-receiving') ?>">
+            <form id="editReceivingForm">
                 <?= csrf_field() ?>
-                <label for="editRefNo">Reference No.</label>
-                <input type="text" id="editRefNo" name="editRefNo" required readonly>
+                <label for="editRefNo">Shipment Number</label>
+                <input type="text" id="editRefNo" name="shipment_number" required>
 
-                <label for="editSupplier">Supplier</label>
-                <input type="text" id="editSupplier" name="editSupplier" required>
+                <label for="editSupplier">Supplier ID</label>
+                <input type="text" id="editSupplier" name="supplier_id" required>
 
-                <label for="editMaterial">Material</label>
-                <input type="text" id="editMaterial" name="editMaterial" required>
+                <label for="editExpectedDate">Expected Date</label>
+                <input type="date" id="editExpectedDate" name="expected_date" required>
 
-                <label for="editQuantity">Quantity</label>
-                <input type="number" id="editQuantity" name="editQuantity" min="1" required>
-
-                <label for="editDateReceived">Date Received</label>
-                <input type="date" id="editDateReceived" name="editDateReceived" required>
+                <label for="editActualDate">Actual Date</label>
+                <input type="date" id="editActualDate" name="actual_date">
 
                 <label for="editStatus">Status</label>
-                <select id="editStatus" name="editStatus" required>
+                <select id="editStatus" name="status" required>
                     <option value="">Select Status...</option>
-                    <option value="Received">Received</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Damaged">Damaged</option>
+                    <option value="pending">Pending</option>
+                    <option value="received">Received</option>
+                    <option value="damaged">Damaged</option>
                 </select>
 
                 <button type="submit">Save Changes</button>
