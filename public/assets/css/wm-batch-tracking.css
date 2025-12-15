@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
 
 body {
     background: #f4f6fb;
     min-height: 100vh;
     margin: 0;
     display: flex;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .sidebar {
     width: 220px;
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 12px rgba(26,26,255,0.08);
+    box-shadow: 2px 0 12px rgba(255,140,0,0.08);
     position: fixed;
     left: 0;
     top: 0;
@@ -78,11 +78,11 @@ body {
     background: #fff;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(26,26,255,0.10);
+    box-shadow: 0 2px 8px rgba(255,140,0,0.10);
 }
 
 .logout-link {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 700;
     text-decoration: none;
     font-size: 1rem;
@@ -94,7 +94,7 @@ body {
 }
 
 .logout-link:hover {
-    background: #e0e7ff;
+    background: #fff3e6;
     color: #0000e6;
 }
 
@@ -135,7 +135,7 @@ body {
 }
 
 .batch-search-bar input:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
     background: #fff;
 }
@@ -161,8 +161,8 @@ body {
 }
 
 .batch-table th {
-    background: #e6eaff;
-    color: #1a1aff;
+    background: #fff3e6;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -200,7 +200,7 @@ body {
     transition: background 0.2s;
 }
 .batch-table td .view-btn:hover {
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 /* Modal styles */
@@ -222,7 +222,7 @@ body {
     background: #fff;
     padding: 2rem 2.5rem;
     border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(26,26,255,0.18), 0 2px 8px rgba(60, 72, 180, 0.10);
+    box-shadow: 0 12px 40px rgba(255,140,0,0.18), 0 2px 8px rgba(60, 72, 180, 0.10);
     min-width: 320px;
     max-width: 400px;
     width: 100%;
@@ -234,7 +234,7 @@ body {
     to { transform: scale(1); opacity: 1; }
 }
 .modal-content h3 {
-    color: #1a1aff;
+    color: #ff8c00;
     margin-top: 0;
     margin-bottom: 1.2rem;
     text-align: center;
@@ -261,9 +261,9 @@ body {
     outline: none;
 }
 .close:hover {
-    background: #e0e7ff;
-    color: #1a1aff;
-    box-shadow: 0 2px 8px rgba(26,26,255,0.08);
+    background: #fff3e6;
+    color: #ff8c00;
+    box-shadow: 0 2px 8px rgba(255,140,0,0.08);
 }
 
 
@@ -299,7 +299,7 @@ body {
 }
 
 .action-btn:hover {
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 /* Form Styles */
@@ -323,13 +323,13 @@ body {
 
 .modal-content form input:focus,
 .modal-content form select:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
 }
 
 .modal-content form button[type="submit"] {
     width: 100%;
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;

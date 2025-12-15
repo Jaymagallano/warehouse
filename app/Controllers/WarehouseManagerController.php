@@ -25,7 +25,40 @@ class WarehouseManagerController extends BaseController
     // ==================== DASHBOARD ====================
     public function dashboard()
     {
+        // Get inventory summary
         $data['inventory_summary'] = $this->inventoryModel->getSummary();
+
+        // Get pending shipments (outgoing)
+        $data['pending_shipments'] = $this->shipmentModel
+            ->where('type', 'outgoing')
+            ->where('status', 'pending')
+            ->countAllResults();
+
+        // Get pending receivings (incoming)
+        $data['pending_receivings'] = $this->shipmentModel
+            ->where('type', 'incoming')
+            ->where('status', 'pending')
+            ->countAllResults();
+
+        // Get pending approvals
+        $data['pending_approvals'] = $this->approvalModel
+            ->where('status', 'pending')
+            ->findAll();
+
+        // Get recent activities (last 5 shipments)
+        $data['recent_activities'] = $this->shipmentModel
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->findAll();
+
+        // Get low stock notifications
+        $data['low_stock_items'] = $this->inventoryModel
+            ->where('quantity <', 10)
+            ->findAll();
+
+        // Get active users count (you may need to adjust this based on your User model)
+        $data['active_users'] = 8; // Placeholder - update with actual user count if you have a User model
+
         return view('warehouse_manager/dashboard', $data);
     }
 
@@ -338,7 +371,7 @@ class WarehouseManagerController extends BaseController
         $endDate = $this->request->getGet('end_date');
 
         $reportData = [];
-        
+
         switch ($type) {
             case 'inventory':
                 $reportData = $this->inventoryModel->findAll();

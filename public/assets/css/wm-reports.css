@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
 
 body {
     background: #f4f6fb;
     min-height: 100vh;
     margin: 0;
     display: flex;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .sidebar {
     width: 220px;
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 12px rgba(26,26,255,0.08);
+    box-shadow: 2px 0 12px rgba(255,140,0,0.08);
     position: fixed;
     left: 0;
     top: 0;
@@ -78,11 +78,11 @@ body {
     background: #fff;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(26,26,255,0.10);
+    box-shadow: 0 2px 8px rgba(255,140,0,0.10);
 }
 
 .logout-link {
-    color: #1a1aff;
+    color: #ff8c00;
     font-weight: 700;
     text-decoration: none;
     font-size: 1rem;
@@ -94,7 +94,7 @@ body {
 }
 
 .logout-link:hover {
-    background: #e0e7ff;
+    background: #fff3e6;
     color: #0000e6;
 }
 
@@ -137,11 +137,11 @@ body {
     border-radius: 6px;
     font-size: 1rem;
     background: #f7fafd;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .report-filter-form button {
-    background: #1a1aff;
+    background: #ff8c00;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -175,8 +175,8 @@ body {
 }
 
 .reports-table th {
-    background: #e6eaff;
-    color: #1a1aff;
+    background: #fff3e6;
+    color: #ff8c00;
     font-weight: 600;
 }
 
@@ -223,7 +223,7 @@ body {
 
 .filter-group select:focus,
 .filter-group input:focus {
-    border-color: #1a1aff;
+    border-color: #ff8c00;
     outline: none;
 }
 
@@ -245,7 +245,7 @@ body {
 }
 
 .action-btn:hover {
-    background: #1a1aff;
+    background: #ff8c00;
 }
 
 /* Report Content */
@@ -258,7 +258,7 @@ body {
 }
 
 .report-content h3 {
-    color: #1a1aff;
+    color: #ff8c00;
     margin-top: 0;
     margin-bottom: 1rem;
     text-transform: capitalize;
@@ -281,8 +281,8 @@ body {
 }
 
 .report-table th {
-    background: #e6eaff;
-    color: #1a1aff;
+    background: #fff3e6;
+    color: #ff8c00;
     font-weight: 600;
     text-transform: capitalize;
 }
